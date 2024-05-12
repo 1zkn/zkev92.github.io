@@ -1,0 +1,42 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&family=Ubuntu&display=swap');
+
+body{
+  background-color: #212529;
+}
+.container{
+  color: #e9ecef;
+  position: absolute;
+  width: 100%;
+  bottom: 40%;
+  margin: auto;
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+}
+.title{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 55px;;
+  background-image: linear-gradient(to right, #6274E7, #8752A3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+a{
+  color: #e9ecef;
+  text-decoration: none;
+}
+.card a{
+  font-size: 24px;
+  padding: 5px;
+  color: white;
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  -moz-transition: all 0.1s;
+  -o-transition: all 0.1s;
+}
+.card a:hover{
+  font-size: 32px;
+  background-image: linear-gradient(to right, #6274E7, #8752A3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition:
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kevin Net</title>
+  <script defer src="https://stat.nahida.one/script.js" data-website-id="e9973525-842d-4259-8810-64528535216a"></script>
+  <link rel="icon" type="image/png" href="https://cf-cdn.nahida.one/file/images/info.png">
+  <style>
+    body{
+      margin: 0;   
+    }
+    iframe#homescreen{
+      display: block;      
+      border: none;         
+      height: 100vh;       
+      width: 100vw;
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+<iframe id="homescreen" src="old/ngreen.html">Frame non supportato</iframe>
+  <div class="fixed bottom-0 inset-x-0 mx-auto w-40">
+    <select  id="select" onchange="window.changeHome(this);" class="bg-slate-100/[0.25] text-gray-900 text-sm text-center rounded-lg block w-full p-2.5">
+      <option value="ngreen" selected>Green</option>
+      <option value="fblue">Blue</option>
+      <option value="htred">Red</option>
+      <option value="violet" disabled>Violet</option>
+    </select> 
+  </div>
+<script>
+  window.changeHome = function(that) {
+    document.getElementById("homescreen").src = "old/" + that.value + ".html";
+  }
+  window.changeHome(document.getElementById('select'));
+  </script>
+  
+</body>
+</html>
