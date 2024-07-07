@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="robots" content="noindex,nofollow">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>zkevin status</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-200">
+
+<div class="flex items-center justify-center h-screen">
+    <div class="bg-card p-6 rounded-lg shadow-md w-full max-w-md bg-white">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-lg font-semibold">Kevin è:</h2>
+        <div id="status-led" class="w-4 h-4 rounded-full bg-gray-500 ring-2 ring-gray-500"></div>
+      </div>
+      <p id="status-text" class="text-muted-foreground">Error</p>
+      <p class="font-sm pt-6">Aggiornamento: <span id="time" class="text-slate-400">time</span></p>
+    </div>
+  </div>
+  <script>
+    const getStatus = () => {
+        fetch("https://api.nahida.one/php-status/get.php")
+        .then(response => {
+            if(!response.ok){
+                throw new Error('Api response error');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data)
+            const status_led = document.getElementById('status-led')
+            const status_text = document.getElementById('status-text')
+            if(data.status == -1){
+                //offline
+                status_led.className = "w-4 h-4 rounded-full bg-red-500 ring-2 ring-red-500"
+                status_text.textContent = "In questo momento è disconnesso dal mondo. :("
+            }else if(data.status == 1){
+                //online
+                status_led.className = "w-4 h-4 rounded-full bg-green-500 ring-2 ring-green-500"
+                status_text.textContent = "In questo momento è online."
+            }else if(data.status == 2){
+                //busy
+                status_led.className = "w-4 h-4 rounded-full bg-orange-500 ring-2 ring-orange-500"
+                status_text.textContent = "In questo momento è occupato. non è possibile raggiungerlo."
+            }else{
+                //error?
+                status_text.className = "w-4 h-4 rounded-full bg-gray-500 ring-2 ring-gray-500"
+                status_text.textContent = "Ops. qualcosa è andato storto."
+            }
+            const timeUpdateAlert = document.getElementById('time')
+            let currentDate = new Date()
+            timeUpdateAlert.textContent = currentDate.toLocaleTimeString()
+        })
+    }
+    getStatus()
+    setInterval(getStatus, 3000)
+  </script>
+</body>
+</html>
